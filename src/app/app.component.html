@@ -1,4 +1,4 @@
-<h3>My Recipes</h3>
+<!--<h3>My Recipes</h3>
 <app-header></app-header>
 
 <div class="container">
@@ -7,5 +7,19 @@
   </div>
   <div class="row">
     <app-shopping-list></app-shopping-list>
+  </div>
+</div>-->
+
+<div class="container">
+  <app-cockpit 
+  (serverCreated)="onServerAdded($event)"
+
+  (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-server-element *ngFor="let serverElement of serverElements"
+      [srvElement]="serverElement"></app-server-element>
+    </div>
   </div>
 </div>
