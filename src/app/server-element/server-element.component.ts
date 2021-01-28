@@ -1,5 +1,5 @@
 import { InvokeFunctionExpr } from '@angular/compiler';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -8,10 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ServerElementComponent implements OnInit {
   @Input('srvElement') element: {type: string , name: string, content: string};
+  @ContentChild ('contentParagraph') contentParagraph:  ElementRef;
 
-  constructor() { }
+  constructor() { 
+    console.log('constructed called');
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    console.log(changes);
+  }
 
   ngOnInit(): void {
+    console.log('ngOnInit called');
   }
 
 }

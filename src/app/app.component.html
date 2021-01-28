@@ -1,25 +1,29 @@
-<!--<h3>My Recipes</h3>
-<app-header></app-header>
+<h3>My Recipes</h3>
+<app-header (featureSelected)="onNavigate($event)"></app-header>
 
 <div class="container">
   <div class="row">
-      <app-recipes></app-recipes>
+      <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
   </div>
   <div class="row">
-    <app-shopping-list></app-shopping-list>
+    <app-shopping-list *ngIf="loadedFeature === 'shopping-list'"></app-shopping-list>
   </div>
-</div>-->
+</div>
 
-<div class="container">
+<!-- <div class="container">
   <app-cockpit 
-  (serverCreated)="onServerAdded($event)"
-
-  (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
+  (bpCreated)="onBlueprintAdded($event)"
+  (serverCreated)="onServerAdded($event)"></app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
       <app-server-element *ngFor="let serverElement of serverElements"
-      [srvElement]="serverElement"></app-server-element>
+      [srvElement]="serverElement">
+      <p #contentParagraph>
+        <strong *ngIf="serverElement.type=== 'server'" style="color: red">{{ serverElement.content }}</strong>
+        <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+    </p>
+    <p>{{ serverElement.type }}</p></app-server-element>
     </div>
   </div>
-</div>
+</div> -->
